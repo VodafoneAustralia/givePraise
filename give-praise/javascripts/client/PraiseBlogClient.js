@@ -1,9 +1,14 @@
-/*global Meteor, Template, PraisePosts, PraisePostService*/
+/*global Deps, Meteor, Template, PraisePosts, PraisePostService*/
 /*jshint -W020 */
 /**
  * Separate player logic into an own service singleton for better testability and reusability.
  * @type {{}}
  */
+
+ Deps.autorun(function() {
+	Meteor.subscribe('offlineUsers');
+});
+
 PraisePostService = {
 	praisePosts: function() {
 		return PraisePosts.find({});
@@ -23,6 +28,14 @@ Template.praiseBlog.helpers({
 	},
 	postCount: function() {
 		return PraisePostService.postCount();
+	},
+	'offlineUsers': function() {
+		return Meteor.users.find({
+			'status.online': false,
+			_id: {
+				$ne: Meteor.userId()
+			}
+		});
 	}
 
 });
@@ -30,8 +43,8 @@ Template.praiseBlog.helpers({
 Template.praiseBlog.events({
 	'submit .newPraisePostForm': function(event) {
 		// This function is called when the new task form is submitted
-
-		var text = event.target.text.value;
+		var user = document.getElementById('praise-user').value;
+		var text = '@' + user +  ' ' +event.target.text.value;
 
 		Meteor.call('addPost', text);
 
