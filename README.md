@@ -9,6 +9,7 @@ Install Meteor
 $ curl https://install.meteor.com/ | sh
 
 Run The app
+$ cd give-praise
 $ meteor
 Open
  http://localhost:3000
