@@ -1,5 +1,13 @@
-/*global Meteor, praisePosts */
+/*global Meteor, praisePosts, PraisePosts */
 
 Meteor.publish('praisePosts', function() {
 	return PraisePosts.find({});
+});
+
+Meteor.publish('offlineUsers', function() {
+	return Meteor.users.find({
+		'status.online': false
+	}, {
+		username: 1
+	});
 });

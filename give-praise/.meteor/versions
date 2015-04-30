@@ -27,6 +27,8 @@ fastclick@1.0.3
 fourseven:scss@2.0.1_4
 geojson-utils@1.0.3
 google@1.1.5
+gwendall:bindings@0.1.6
+gwendall:body-events@0.1.6
 gwendall:session-json@0.1.7
 html-tools@1.0.4
 htmljs@1.0.4
