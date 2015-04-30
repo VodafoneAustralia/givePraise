@@ -1,4 +1,4 @@
-/*global Meteor, BlogPosts */
+/*global Meteor, PraisePosts */
 
 Meteor.methods({
 	addPost: function(text) {
@@ -15,9 +15,9 @@ Meteor.methods({
 		});
 	},
 
-	deletePost: function(postId) {
+	deletePraisePost: function(postId) {
 
-		var post = BlogPosts.findOne(postId);
+		var post = PraisePosts.findOne(postId);
 		if ((post.private && post.owner !== Meteor.userId()) || post.owner !== Meteor.userId()) {
 			// If the task is private, make sure only the owner can delete it
 			throw new Meteor.Error('not-authorized');
