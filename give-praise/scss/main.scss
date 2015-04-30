@@ -1,0 +1,62 @@
+.container-fluid {
+	.praiseBlog {
+		margin-top: 100px;
+	}
+	.welcome {
+		margin-top: 100px;
+	}
+}
+.navbar-collapse {
+	overflow: visible !important;
+}
+.navbar {
+    background-color: #E60000;
+    color:white;
+}
+
+
+
+
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Toggle Styles */
+
+#menu-toggle {
+
+	position: absolute;
+  	top: 62px;
+  	left: 12px;
+}
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+
+
+#page-content-wrapper {
+    width: 100%;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+
+
+
+

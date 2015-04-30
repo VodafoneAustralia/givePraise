@@ -1,0 +1,21 @@
+<template name="praiseBlog">
+	<div class="praiseBlog">
+
+		<h2>Praise Me Thanks so far ({{postCount}})</h2>
+
+
+
+		<!-- add a form below the h1 -->
+		{{#if currentUser}}
+		Add a Praise Me Callout
+		<form class="newPraisePostForm">
+			<input class="addNewPraisePost" type="textarea" name="text" placeholder="Type to add new praise" />
+		</form>
+		{{/if}}
+
+	</div>
+
+	<ul>
+		{{#each praisePosts}} {{> praisePost}} {{/each}}
+	</ul>
+</template>
