@@ -13,6 +13,12 @@ $ cd give-praise
 $ meteor
 Open
  http://localhost:3000
+ 
+Checking MongoDB inserst
+in browser type
+```
+ctrl + M
+```
  ```
  Note for latest Beta Code Build from develop branch
  Master is for Release Only
