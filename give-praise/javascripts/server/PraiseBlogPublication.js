@@ -11,3 +11,11 @@ Meteor.publish('offlineUsers', function() {
 		username: 1
 	});
 });
+
+Meteor.publish('onlineUsers', function() {
+	return Meteor.users.find({
+		'status.online': true
+	}, {
+		username: 1
+	});
+});

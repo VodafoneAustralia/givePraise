@@ -1,7 +1,7 @@
 <template name="praiseBlog">
 	<div class="praiseBlog">
 
-		<h2>Praise Me Thanks so far ({{postCount}})</h2>
+		<h2>Praise Me Thanks so far ({{give}})</h2>
 
 
 		<h3>Pick a User to Praise </h3>
@@ -9,6 +9,10 @@
 			{{#each offlineUsers}}
 				<option>{{username}}</option>
 			{{/each}}
+			{{#each onlineUsers}}
+				<option>{{username}}</option>
+			{{/each}}
+
 		</select>
 		<!-- add a form below the h1 -->
 		<br>

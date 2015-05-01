@@ -7,6 +7,7 @@
 
  Deps.autorun(function() {
 	Meteor.subscribe('offlineUsers');
+	Meteor.subscribe('onlineUsers');
 });
 
 PraisePostService = {
@@ -32,6 +33,14 @@ Template.praiseBlog.helpers({
 	'offlineUsers': function() {
 		return Meteor.users.find({
 			'status.online': false,
+			_id: {
+				$ne: Meteor.userId()
+			}
+		});
+	},
+	'onlineUsers': function() {
+		return Meteor.users.find({
+			'status.online': true,
 			_id: {
 				$ne: Meteor.userId()
 			}
