@@ -12,7 +12,7 @@
 
 PraisePostService = {
 	praisePosts: function() {
-		return PraisePosts.find({});
+		return PraisePosts.find({}, {sort: {createdAt: -1}});
 	},
 	postCount: function() {
 		return PraisePosts.find().count();
