@@ -14,9 +14,9 @@ $ meteor
 Open
  http://localhost:3000
  
-Checking MongoDB inserst
-in browser type
+### Checking MongoDB inserts
 ```
+in browser type
 ctrl + M
 ```
  ```
