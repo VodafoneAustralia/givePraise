@@ -19,3 +19,10 @@ Meteor.publish('onlineUsers', function() {
 		username: 1
 	});
 });
+
+Meteor.publish('allUsers', function() {
+	return Meteor.users.find({
+		username: 1
+	},{sort: {username: -1}});
+});
+

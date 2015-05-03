@@ -1,7 +1,7 @@
 /*global Meteor, PraisePosts */
 
 Meteor.methods({
-	addPost: function(text) {
+	addPost: function(text, plaudit) {
 		// Make sure the user is logged in before inserting a task
 		if (!Meteor.userId()) {
 			throw new Meteor.Error('not-authorized');
@@ -9,6 +9,7 @@ Meteor.methods({
 
 		PraisePosts.insert({
 			text: text,
+			plaudit: plaudit,
 			createdAt: new Date(),
 			owner: Meteor.userId(),
 			username: Meteor.user().username

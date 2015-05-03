@@ -1,12 +1,17 @@
 <template name="praisePost">
-		<div class="praisePostRow">
-			<h4 class="praisePostUser">
-				{{username}}
-			</h4>
-			<h5 class="praisePostValue">
+		<div class="jumbotron">
+			<h2 class="praisePostUser">
+				@{{plaudit}}
+			</h2>
+			<h1 class="praisePostUser">
 				{{text}}
-			</h5>
+			</h1>
+			<p class="praisePostValue">
+				Plaudit given by:{{username}}
+			</p>
 		</div>
-		<button class="delete">Delete Post &times;</button>
+		{{#if isOwner}}
+			<button class="delete btn btn-primary btn-lg">Delete Post &times;</button>
+		{{/if}}
 		<hr>
 </template>

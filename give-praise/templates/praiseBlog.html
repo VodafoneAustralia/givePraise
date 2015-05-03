@@ -1,33 +1,36 @@
 <template name="praiseBlog">
 	<div class="praiseBlog">
+		<div class="panel panel-default">
 
-		<h2>Praise Me Thanks</h2>
+			<h2>Give Plaudits</h2>
 
 
-		<h3>Pick a User to Praise </h3>
-		<select id="praise-user" data-bind="selected-user">
-			{{#each offlineUsers}}
-				<option>{{username}}</option>
-			{{/each}}
-			{{#each onlineUsers}}
-				<option>{{username}}</option>
-			{{/each}}
 
-		</select>
-		<!-- add a form below the h1 -->
-		<br>
-		{{#if currentUser}}
-		<h3>Give them some praise </h3>
-		Add a Praise Me Callout
-		<form class="newPraisePostForm">
-			<span data-bind="selected-user"></span>
-			<input class="addNewPraisePost" type="textarea" name="text" placeholder="Type to add new praise" />
-		</form>
-		{{/if}}
+			<!-- add a form below the h1 -->
+			<br>
+			{{#if currentUser}}
+			<h3>Pick a User to Praise </h3>
+			<select id="praise-user" >
+				{{#each allUsers i}}
+					<option>{{this}}</option>
+				{{/each}}
+
+			</select>
+
+			<h3>Give them some praise </h3>
+			<form class="newPraisePostForm">
+				<input class="addNewPraisePost" type="textarea" name="text" placeholder="Plaudit....." />
+				<input type="submit" class="submit-plaudit" value="Send Plaudit">
+			</form>
+			{{else}}
+				<h3>Please Login to Give some Plaudits to a team member</h3>
+			{{/if}}
+		</div>
 
 	</div>
-
-	<ul>
-		{{#each praisePosts}} {{> praisePost}} {{/each}}
-	</ul>
+		<div class="panel panel-default">
+			{{#each praisePosts}} {{> praisePost}} {{/each}}
+		</div>
 </template>
+
+
