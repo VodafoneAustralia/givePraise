@@ -1,0 +1,23 @@
+<template name="showPlaudits">
+	<div class="praiseBlog">
+		<div class="panel panel-default give-plaudit-container row">
+			<div class="pludit-thanks col-xs-12 col-sm-12 col-lg-4">
+				<div class="sticky-title">
+					<img src="/images/plaudits-logo-white-transparent.png" style="width: 200px;">
+					<h2>Thank you</h2>
+					<p>Someone helped you out? Why not show how much you appreciate it?</p>
+				</div>
+			</div>
+			<div class="plaudit-post-wrapper">
+				<div class="pludit-form col-xs-12 col-sm-12 col-lg-8">
+					<div id="carousel">
+						{{#each praisePosts}} {{> praisePost}} {{/each}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</template>
+
+
