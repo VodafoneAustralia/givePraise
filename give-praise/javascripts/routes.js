@@ -15,10 +15,6 @@ Router.map(function() {
 
 	this.route('praiseBlog', {
 		path: '/praiseBlog',
-		layoutTemplate: 'baseLayout',
-		waitOn: function(){
-			return Meteor.subscribe('praisePosts');
-		},
-		fastRender: true
+		layoutTemplate: 'baseLayout'
 	});
 });
