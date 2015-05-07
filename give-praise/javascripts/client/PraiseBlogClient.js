@@ -25,8 +25,41 @@ PraisePostService = {
 	}
 };
 
+Template.showPlaudits.onRendered(function () {
+  // Use the Slick jQuery plugin
+  this.$('#carousel').slick({
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 4000,
+        speed: 500,
+    });
+});
 
-// This code only runs on the client
+// Events
+Template.praiseBlog.events({
+	'submit .newPraisePostForm': function(event) {
+		// This function is called when the new task form is submitted
+		var plaudit = document.getElementById('praise-user').value;
+		var text = event.target.text.value;
+
+		Meteor.call('addPost', text, plaudit);
+
+		// Clear form
+		event.target.text.value = '';
+		window.location = '/showPlaudits';
+		// Prevent default form submit
+		return false;
+	}
+});
+
+Template.myPosts.events({
+	'click .delete': function() {
+		Meteor.call('deletePraisePost', this._id);
+	}
+});
+
+//Helpers
+
 Template.praiseBlog.helpers({
 	'offlineUsers': function() {
 		return Meteor.users.find({
@@ -76,37 +109,6 @@ Template.leaderboard.helpers({
 
 });
 
-Template.showPlaudits.onRendered(function () {
-  // Use the Slick jQuery plugin
-  this.$('#carousel').slick({
-        infinite: true,
-        autoplay: true,
-        autoplaySpeed: 4000,
-        speed: 500,
-    });
-});
-
-Template.praiseBlog.events({
-	'submit .newPraisePostForm': function(event) {
-		// This function is called when the new task form is submitted
-		var plaudit = document.getElementById('praise-user').value;
-		var text = event.target.text.value;
-
-		Meteor.call('addPost', text, plaudit);
-
-		// Clear form
-		event.target.text.value = '';
-		window.location = '/showPlaudits';
-		// Prevent default form submit
-		return false;
-	}
-});
-
-Template.myPosts.events({
-	'click .delete': function() {
-		Meteor.call('deletePraisePost', this._id);
-	}
-});
 
 Template.myPosts.helpers({
 	isOwner: function() {

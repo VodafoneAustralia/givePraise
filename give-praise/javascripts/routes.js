@@ -3,14 +3,12 @@
 'use strict';
 
 Router.map(function() {
-	this.route('welcome', {
-		path: '/home',
-		layoutTemplate: 'baseLayout'
-	});
-
 	this.route('indexPage', {
 		path: '/',
-		layoutTemplate: 'baseLayout'
+		layoutTemplate: 'baseLayout',
+		waitOn: function(){
+			return Meteor.subscribe('praisePosts');
+		},
 	});
 
 	this.route('praiseBlog', {
