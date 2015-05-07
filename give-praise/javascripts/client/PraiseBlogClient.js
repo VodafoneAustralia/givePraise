@@ -58,9 +58,6 @@ Template.praiseBlog.helpers({
 Template.showPlaudits.helpers({
 	praisePosts: function() {
 		return PraisePostService.praisePosts();
-	},
-	postCount: function() {
-		return PraisePostService.postCount();
 	}
 
 });
@@ -68,13 +65,16 @@ Template.showPlaudits.helpers({
 Template.yourPlaudits.helpers({
 	praisePosts: function() {
 		return PraisePostService.praisePosts();
-	},
-	postCount: function() {
-		return PraisePostService.postCount();
 	}
 
 });
 
+Template.leaderboard.helpers({
+	praisePosts: function() {
+		return PraisePostService.praisePosts();
+	}
+
+});
 
 Template.showPlaudits.onRendered(function () {
   // Use the Slick jQuery plugin
@@ -130,5 +130,44 @@ Template.praisePost.helpers({
 	createdAtFormatted: function() {
 		return moment(this.createdAt).format('MM/DD/YYYY, HH:MM');
 	}
+});
+
+Template.leaderboard.helpers({
+	mostPraised: function() {
+		var plaudits = PraisePosts.find().fetch();
+
+		var groupedData = _.groupBy(_.pluck(plaudits, 'plaudit')),
+			sortedData = _.map(groupedData,function(item) {
+
+							return {
+								plauditLength: item.length,
+								plauditName: item[0]
+							};
+
+						}),
+			filtered = _.sortBy(sortedData, 'plauditLength'),
+			mostPraised = filtered.reverse();
+
+		
+		return mostPraised;
+	},
+	mostRaised: function() {
+		var plaudits = PraisePosts.find().fetch();
+
+		var groupedData = _.groupBy(_.pluck(plaudits, 'username')),
+			sortedData = _.map(groupedData,function(item) {
+
+							return {
+								plauditLength: item.length,
+								plauditName: item[0]
+							};
+
+						}),
+			filtered = _.sortBy(sortedData, 'plauditLength'),
+			mostRaised = filtered.reverse();
+
+		
+		return mostRaised;
+	},
 });
 

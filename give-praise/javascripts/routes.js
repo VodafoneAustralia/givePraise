@@ -25,8 +25,17 @@ Router.map(function() {
 			return Meteor.subscribe('praisePosts');
 		},
 	});
+
 	this.route('yourPlaudits', {
 		path: '/yourPlaudits',
+		layoutTemplate: 'baseLayout',
+		waitOn: function(){
+			return Meteor.subscribe('praisePosts');
+		},
+	});
+
+	this.route('leaderboard', {
+		path: '/leaderboard',
 		layoutTemplate: 'baseLayout',
 		waitOn: function(){
 			return Meteor.subscribe('praisePosts');
