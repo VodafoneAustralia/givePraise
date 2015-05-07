@@ -9,6 +9,7 @@ Deps.autorun(function() {
 	Meteor.subscribe('offlineUsers');
 	Meteor.subscribe('onlineUsers');
 	Meteor.subscribe('allUsers');
+	Meteor.subscribe('praisePosts');
 });
 
 PraisePostService = {
@@ -26,8 +27,6 @@ PraisePostService = {
 
 
 // This code only runs on the client
-Meteor.subscribe('praisePosts');
-
 Template.praiseBlog.helpers({
 	'offlineUsers': function() {
 		return Meteor.users.find({
@@ -66,6 +65,16 @@ Template.showPlaudits.helpers({
 
 });
 
+Template.yourPlaudits.helpers({
+	praisePosts: function() {
+		return PraisePostService.praisePosts();
+	},
+	postCount: function() {
+		return PraisePostService.postCount();
+	}
+
+});
+
 
 Template.showPlaudits.onRendered(function () {
   // Use the Slick jQuery plugin
@@ -93,17 +102,31 @@ Template.praiseBlog.events({
 	}
 });
 
-Template.praisePost.events({
+Template.myPosts.events({
 	'click .delete': function() {
 		Meteor.call('deletePraisePost', this._id);
 	}
 });
 
-
-Template.praisePost.helpers({
+Template.myPosts.helpers({
 	isOwner: function() {
 		return this.owner === Meteor.userId();
 	},
+	createdAtFormatted: function() {
+		return moment(this.createdAt).format('MM/DD/YYYY, HH:MM');
+	}
+});
+
+Template.recievedPosts.helpers({
+	isMyPlaudit: function() {
+		return this.plaudit === Meteor.user().username;
+	},
+	createdAtFormatted: function() {
+		return moment(this.createdAt).format('MM/DD/YYYY, HH:MM');
+	}
+});
+
+Template.praisePost.helpers({
 	createdAtFormatted: function() {
 		return moment(this.createdAt).format('MM/DD/YYYY, HH:MM');
 	}
