@@ -9,11 +9,13 @@ Router.map(function() {
 		waitOn: function(){
 			return Meteor.subscribe('praisePosts');
 		},
+		loadingTemplate: 'loading'
 	});
 
 	this.route('praiseBlog', {
 		path: '/praiseBlog',
-		layoutTemplate: 'baseLayout'
+		layoutTemplate: 'baseLayout',
+		loadingTemplate: 'loading'
 	});
 
 	this.route('showPlaudits', {
@@ -22,6 +24,7 @@ Router.map(function() {
 		waitOn: function(){
 			return Meteor.subscribe('praisePosts');
 		},
+		loadingTemplate: 'loading'
 	});
 
 	this.route('yourPlaudits', {
@@ -30,6 +33,7 @@ Router.map(function() {
 		waitOn: function(){
 			return Meteor.subscribe('praisePosts');
 		},
+		loadingTemplate: 'loading'
 	});
 
 	this.route('leaderboard', {
@@ -38,5 +42,6 @@ Router.map(function() {
 		waitOn: function(){
 			return Meteor.subscribe('praisePosts');
 		},
+		loadingTemplate: 'loading'
 	});
 });
