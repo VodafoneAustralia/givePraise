@@ -58,6 +58,12 @@ Template.myPosts.events({
 	}
 });
 
+Template.body.events({
+	'click .like': function(e) {
+		Meteor.call('addLike',this.attributes["data-plaudit-id"].value);
+	}
+});
+
 //Helpers
 
 Template.praiseBlog.helpers({
