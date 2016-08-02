@@ -1,17 +1,24 @@
 <template name="praisePost">
-		<div class="jumbotron">
-			<h2 class="praisePostUser">
-				@{{plaudit}}
-			</h2>
-			<h1 class="praisePostUser">
-				{{text}}
-			</h1>
-			<p class="praisePostValue">
-				Plaudit given by:{{username}}
-			</p>
+	<div class="praisePost">
+		<div class="avatar-div col-lg-2">
+			{{> avatar
+				user=this
+				size="large"
+				shape="circle"
+				class="voda-avatar"
+				txtColor="#E60000"
+		    }}
 		</div>
-		{{#if isOwner}}
-			<button class="delete btn btn-primary btn-lg">Delete Post &times;</button>
-		{{/if}}
-		<hr>
+		<div class="plaudit-single-div col-lg-10">
+			<h2 class="praisePostUser">
+				{{plaudit}}<span> - recieved @ {{createdAtFormatted}}</span>
+			</h2>
+			<h2 class="praisePostValue">
+				{{text}}
+			</h2>
+			<h2 class="praisePostUser">
+			Sent by {{username}}
+			</h2>
+		</div>
+	</div>
 </template>
