@@ -16,6 +16,10 @@ Meteor.methods({
 		});
 	},
 
+    addLike: function (postId) {
+     	PraisePosts.update(postId, {$inc: {'like':1}});
+    },
+
 	deletePraisePost: function(postId) {
 
 		var post = PraisePosts.findOne(postId);
@@ -25,7 +29,6 @@ Meteor.methods({
 		} else {
 			PraisePosts.remove(postId);
 		}
-
 	}
 
 });
