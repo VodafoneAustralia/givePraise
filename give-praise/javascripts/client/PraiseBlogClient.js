@@ -84,7 +84,11 @@ Template.praiseBlog.helpers({
 		});
 	},
 	'allUsers': function() {
-		var usersLower = Meteor.users.find().fetch();
+		var usersLower = Meteor.users.find({
+			_id: {
+				$ne: Meteor.userId()
+			}
+		}).fetch();
 		var usernameArray = _.pluck(usersLower, 'username');
 		usernameArray.sort(function(a, b) {
 			return a.toLowerCase().localeCompare(b.toLowerCase());
@@ -156,7 +160,7 @@ Template.leaderboard.helpers({
 			filtered = _.sortBy(sortedData, 'plauditLength'),
 			mostPraised = filtered.reverse();
 
-		
+
 		return mostPraised;
 	},
 	mostRaised: function() {
@@ -174,7 +178,7 @@ Template.leaderboard.helpers({
 			filtered = _.sortBy(sortedData, 'plauditLength'),
 			mostRaised = filtered.reverse();
 
-		
+
 		return mostRaised;
 	},
 });
