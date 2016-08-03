@@ -18,6 +18,9 @@ body {
 		}
 	}
 }
+#login-email, #login-password, #login-buttons-password, #login-other-options {
+	display:none;
+}
 h2 {
 	font-size: 30px;
 	color: white;

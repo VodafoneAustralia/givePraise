@@ -12,7 +12,7 @@ Meteor.methods({
 			plaudit: plaudit,
 			createdAt: new Date(),
 			owner: Meteor.userId(),
-			username: Meteor.user().username
+			username: Meteor.user().profile.name
 		});
 	},
 
