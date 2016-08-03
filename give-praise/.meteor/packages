@@ -5,10 +5,7 @@
 # but you can also edit it by hand.
 
 meteor-platform
-accounts-ui
 accounts-password
-accounts-google
-accounts-facebook
 twbs:bootstrap
 fourseven:scss
 iron:router
@@ -19,6 +16,11 @@ raix:cordova
 msavin:mongol
 email
 gwendall:bindings
-meteorhacks:fast-render
 spacebars
 underscore
+ian:accounts-ui-bootstrap-3
+bengott:avatar
+momentjs:moment
+shcherbin:slickjs
+multiply:iron-router-progress
+ground:db

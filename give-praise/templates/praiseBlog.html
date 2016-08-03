@@ -1,36 +1,37 @@
 <template name="praiseBlog">
 	<div class="praiseBlog">
-		<div class="panel panel-default">
+		<div class="panel panel-default give-plaudit-container row">
+			<div class="pludit-thanks col-xs-12 col-sm-12 col-lg-4">
+				<div class="sticky-title">
+					<img src="/images/plaudits-logo-white-transparent.png" style="width: 200px;">
+					<h2>Tell us, who made your day</h2>
+					<p>Select person and enter thank you note.</p>
+				</div>
+			</div>
+			<div class="pludit-form col-xs-12 col-sm-12 col-lg-8">
+				<!-- add a form below the h1 -->
+				<br>
+				{{#if currentUser}}
+				<label>Select person</label>
+				<select id="praise-user" style="width: 100%;" >
+					{{#each allUsers i}}
+							<option>{{this}}</option>
+					{{/each}}
 
-			<h2>Give Plaudits</h2>
+				</select>
 
-
-
-			<!-- add a form below the h1 -->
-			<br>
-			{{#if currentUser}}
-			<h3>Pick a User to Praise </h3>
-			<select id="praise-user" >
-				{{#each allUsers i}}
-					<option>{{this}}</option>
-				{{/each}}
-
-			</select>
-
-			<h3>Give them some praise </h3>
-			<form class="newPraisePostForm">
-				<input class="addNewPraisePost" type="textarea" name="text" placeholder="Plaudit....." />
-				<input type="submit" class="submit-plaudit" value="Send Plaudit">
-			</form>
-			{{else}}
-				<h3>Please Login to Give some Plaudits to a team member</h3>
-			{{/if}}
+				<label>Enter thank you note </label>
+				<form class="newPraisePostForm">
+					<textarea style="width: 100%;" class="addNewPraisePost" type="textarea" name="text" placeholder="Plaudit....."></textarea>
+					<input style="width: 100%;" type="submit" class="submit-plaudit" value="Send Plaudit">
+				</form>
+				{{else}}
+					<h3>Please Login above to Give some Plaudits to a team member</h3>
+				{{/if}}
+			</div>
 		</div>
 
 	</div>
-		<div class="panel panel-default">
-			{{#each praisePosts}} {{> praisePost}} {{/each}}
-		</div>
 </template>
 
 
