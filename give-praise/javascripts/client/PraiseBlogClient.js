@@ -83,7 +83,7 @@ Template.praiseBlog.helpers({
 				$ne: Meteor.userId()
 			}
 		}).fetch();
-		var usernameArray = _.pluck(usersLower, 'profile.name');
+		var usernameArray = _.pluck(usersLower, 'username');
 		usernameArray.sort(function(a, b) {
 			return a.toLowerCase().localeCompare(b.toLowerCase());
 		});
@@ -125,7 +125,7 @@ Template.myPosts.helpers({
 
 Template.recievedPosts.helpers({
 	isMyPlaudit: function() {
-		return this.plaudit === Meteor.user().profile.name;
+		return this.plaudit === Meteor.user().username;
 	},
 	createdAtFormatted: function() {
 		return moment(this.createdAt).format('MM/DD/YYYY, HH:MM');
@@ -160,7 +160,7 @@ Template.leaderboard.helpers({
 	mostRaised: function() {
 		var plaudits = PraisePosts.find().fetch();
 
-		var groupedData = _.groupBy(_.pluck(plaudits, 'profile.name')),
+		var groupedData = _.groupBy(_.pluck(plaudits, 'username')),
 			sortedData = _.map(groupedData,function(item) {
 
 							return {

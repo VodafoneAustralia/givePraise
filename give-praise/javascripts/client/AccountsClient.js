@@ -1,6 +1,5 @@
 /*global Accounts*/
 
 Accounts.ui.config({
-	forbidClientAccountCreation : true
-
+	passwordSignupFields: 'USERNAME_AND_EMAIL'
 });

@@ -22,7 +22,7 @@ Meteor.publish('onlineUsers', function() {
 
 Meteor.publish('allUsers', function() {
 	return Meteor.users.find({
-		username: 1,
+		username: 1
 	});
 });
 
